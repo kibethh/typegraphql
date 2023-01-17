@@ -8,7 +8,7 @@ const appDataSource = new DataSource({
   password: "sqlkibethh",
   database: "TypeGraphQL",
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: ["src/entities/*.*"],
 });
 

@@ -6,6 +6,7 @@ import express from "express";
 import cors from "cors";
 import { json } from "body-parser";
 import { buildSchema } from "type-graphql";
+
 import { RegisterResolver } from "./modules/user/Register";
 
 const app = express();
@@ -14,7 +15,9 @@ const main = async () => {
     const schema = await buildSchema({
       resolvers: [RegisterResolver],
     });
-    const apolloServer = new ApolloServer({ schema });
+    const apolloServer = new ApolloServer({
+      schema,
+    });
     await apolloServer.start();
 
     app.use("/graphql", cors(), json(), expressMiddleware(apolloServer));
